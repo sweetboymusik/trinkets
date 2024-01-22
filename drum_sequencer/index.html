@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>JS Drum Machine</title>
+  </head>
+  <body>
+    <audio src="sounds/bd.ogg" class="bd"></audio>
+    <audio src="sounds/sd.ogg" class="sd"></audio>
+    <audio src="sounds/cl.ogg" class="cp"></audio>
+    <audio src="sounds/rs.ogg" class="rs"></audio>
+    <audio src="sounds/lt.ogg" class="lt"></audio>
+    <audio src="sounds/lt.ogg" class="ht"></audio>
+    <audio src="sounds/ch.ogg" class="ch"></audio>
+    <audio src="sounds/oh.ogg" class="oh"></audio>
+    <audio src="sounds/oh.ogg" class="cy"></audio>
+
+    <div class="machine">
+      <h3 class="master-label">Master Volume</h3>
+      <div class="big-knob-container">
+        <div class="big-knob-border">
+          <div class="knob-num zero">0</div>
+          <div class="knob-num one">1</div>
+          <div class="knob-num two">2</div>
+          <div class="knob-num three">3</div>
+          <div class="knob-num four">4</div>
+          <div class="knob-num five">5</div>
+          <div class="knob-num six">6</div>
+          <div class="knob-num seven">7</div>
+          <div class="knob-num eight">8</div>
+          <div class="knob-num nine">9</div>
+          <div class="knob-num ten">10</div>
+          <div class="big-knob" id="master">
+            <div class="big-knob-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transport">
+        <h3 class="tempo-label">Tempo</h3>
+        <input type="range" id="tempo" min="40" max="400" class="tempo" />
+        <button class="play" type="button">Play</button>
+      </div>
+
+      <div class="control-container">
+        <!-- KICK -->
+        <div class="control-strip" id="bd">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+
+          <button type="button" class="pad selected" id="bd">
+            <span class="pad-text">Kick</span>
+          </button>
+        </div>
+
+        <!-- SNARE -->
+        <div class="control-strip" id="sd">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="sd">
+            <span class="pad-text">Snare</span>
+          </button>
+        </div>
+
+        <!-- CLAP -->
+        <div class="control-strip" id="cp">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="cp">
+            <span class="pad-text">Clap</span>
+          </button>
+        </div>
+
+        <!-- RIM -->
+        <div class="control-strip" id="rs">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+
+          <button type="button" class="pad" id="rs">
+            <span class="pad-text">Rim Shot</span>
+          </button>
+        </div>
+
+        <!-- KICK -->
+        <div class="control-strip" id="lt">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+
+          <button type="button" class="pad" id="lt">
+            <span class="pad-text">Lo Tom</span>
+          </button>
+        </div>
+
+        <!-- HI TOM -->
+        <div class="control-strip" id="ht">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="ht">
+            <span class="pad-text">Hi Tom</span>
+          </button>
+        </div>
+
+        <!-- CH -->
+        <div class="control-strip" id="ch">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="ch">
+            <span class="pad-text">Hi-Hat (Closed)</span>
+          </button>
+        </div>
+
+        <!-- KICK -->
+        <div class="control-strip" id="oh">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="oh">
+            <span class="pad-text">Hi-Hat (Open)</span>
+          </button>
+        </div>
+
+        <!-- KICK -->
+        <div class="control-strip" id="cy">
+          <div class="knob-container">
+            <div class="knob vol" id="gain">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>GAIN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob pan" id="pan">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>PAN</p>
+          </div>
+          <div class="knob-container">
+            <div class="knob tune" id="rate">
+              <div class="knob-line"></div>
+            </div>
+            <div class="scale-container">
+              <div class="scale-line one"></div>
+              <div class="scale-line three"></div>
+              <div class="scale-line five"></div>
+              <div class="scale-line seven"></div>
+              <div class="scale-line ten"></div>
+            </div>
+            <p>RATE</p>
+          </div>
+          <button type="button" class="pad" id="cy">
+            <span class="pad-text">Cymbal</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="trigger-container">
+        <button class="trigger red" id="t1">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger red" id="t2">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger red" id="t3">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger red" id="t4">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger orange" id="t5">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger orange" id="t6">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger orange" id="t7">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger orange" id="t8">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger yellow" id="t9">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger yellow" id="t10">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger yellow" id="t11">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger yellow" id="t12">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger white" id="t13">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger white" id="t14">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger white" id="t15">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+        <button class="trigger white" id="t16">
+          <div class="trigger-indicator"></div>
+          <div class="trigger-divider"></div>
+          <div class="trigger-beat"></div>
+        </button>
+      </div>
+
+      <div class="trigger-labels top">
+        <label for="bd">1</label>
+        <label for="sd">2</label>
+        <label for="lt">3</label>
+        <label for="mt">4</label>
+        <label for="ht">5</label>
+        <label for="rs">6</label>
+        <label for="cp">7</label>
+        <label for="cb">8</label>
+        <label for="cy">9</label>
+        <label for="oh">10</label>
+        <label for="ch">11</label>
+        <label for="">12</label>
+        <label for="">13</label>
+        <label for="">14</label>
+        <label for="">15</label>
+        <label for="">16</label>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

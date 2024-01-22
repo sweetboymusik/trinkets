@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
+
+:root {
+  --color-bg: rgb(26, 26, 26);
+  --color-border: rgb(91, 91, 91);
+  --color-not-in-word: rgb(150, 150, 145);
+  --color-in-word: hsl(62, 55%, 67%);
+  --color-in-place: hsl(109, 40%, 49%);
+  --text-in: rgb(26, 26, 26);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-bg);
+}
+
+h1 {
+  color: white;
+  font-weight: 100;
+  font-size: 4rem;
+  margin-bottom: 30px;
+  border-bottom: 2px var(--color-border) solid;
+}
+
+body {
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.grid-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 10px;
+  padding-bottom: 0;
+  transform: translate(0, 0);
+  transition: transform 0.08s ease;
+}
+
+.shake-left {
+  transform: translate(-6px, 0);
+}
+
+.shake-right {
+  transform: translate(6px, 0);
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border: 2px var(--color-border) solid;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-letter {
+  font-size: 4rem;
+  color: rgb(35, 35, 35);
+  color: white;
+  font-weight: 200;
+}
+
+.not-in-word,
+.not-in-word span {
+  font-weight: 100;
+  background-color: var(--color-border);
+  color: var(--text-in);
+}
+
+.in-word,
+.in-word span {
+  font-weight: 400;
+  background-color: var(--color-in-word);
+  color: var(--text-in);
+  border: none;
+}
+
+.in-place,
+.in-place span {
+  font-weight: 500;
+  background-color: var(--color-in-place);
+  color: var(--text-in);
+  border: none;
+}
