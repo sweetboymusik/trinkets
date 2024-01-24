@@ -7,7 +7,13 @@
     <title>Wordle</title>
   </head>
   <body>
-    <h1>Wordle</h1>
+    <div class="overlay">
+      <span class="overlay-text"></span>
+      <br />
+      <button type="button">play again</button>
+    </div>
+    <h1>wordle</h1>
+    <h3 class="warning">Not in word list!</h3>
     <div class="game-grid">
       <div class="grid-row" id="r1">
         <div class="box">
@@ -26,7 +32,7 @@
           <span class="box-letter"></span>
         </div>
       </div>
-      
+
       <div class="grid-row" id="r2">
         <div class="box">
           <span class="box-letter"></span>
@@ -116,7 +122,46 @@
           <span class="box-letter"></span>
         </div>
       </div>
+    </div>
 
+    <div class="keyboard-container">
+      <div class="key-row">
+        <button type="button" class="key"><span>q</span></button>
+        <button type="button" class="key"><span>w</span></button>
+        <button type="button" class="key"><span>e</span></button>
+        <button type="button" class="key"><span>r</span></button>
+        <button type="button" class="key"><span>t</span></button>
+        <button type="button" class="key"><span>y</span></button>
+        <button type="button" class="key"><span>u</span></button>
+        <button type="button" class="key"><span>i</span></button>
+        <button type="button" class="key"><span>o</span></button>
+        <button type="button" class="key"><span>p</span></button>
+      </div>
+
+      <div class="key-row">
+        <button type="button" class="key"><span>a</span></button>
+        <button type="button" class="key"><span>s</span></button>
+        <button type="button" class="key"><span>d</span></button>
+        <button type="button" class="key"><span>f</span></button>
+        <button type="button" class="key"><span>g</span></button>
+        <button type="button" class="key"><span>h</span></button>
+        <button type="button" class="key"><span>j</span></button>
+        <button type="button" class="key"><span>k</span></button>
+        <button type="button" class="key"><span>l</span></button>
+      </div>
+
+      <div class="key-row">
+        <button type="button" class="key large"><span>enter</span></button>
+        <button type="button" class="key"><span>z</span></button>
+        <button type="button" class="key"><span>x</span></button>
+        <button type="button" class="key"><span>c</span></button>
+        <button type="button" class="key"><span>v</span></button>
+        <button type="button" class="key"><span>b</span></button>
+        <button type="button" class="key"><span>n</span></button>
+        <button type="button" class="key"><span>m</span></button>
+        <button type="button" class="key large"><span>delete</span></button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
