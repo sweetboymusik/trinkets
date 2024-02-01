@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background: linear-gradient(to top right, #e66465, 10%, #9198e5);
 }
 .container {
   display: flex;
@@ -21,6 +22,9 @@ body {
 
 .main-button {
   padding: 10px;
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
 }
 
 .amount-display {
@@ -65,4 +69,13 @@ body {
 .can-not-purchase {
   pointer-events: none;
   color: grey;
+}
+
+.svg-container {
+  display: flex;
+  align-items: center;
+}
+
+.companion {
+  transform: scale(0.5);
 }

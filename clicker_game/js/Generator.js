@@ -1,16 +1,7 @@
-// elements
-const mainBtnEl = document.querySelector(".main-button");
-const amtDisplayEl = document.querySelector(".amount-display");
-const genContainerEl = document.querySelector(".generators-container");
-
-const fps = 16.7;
-const genInterval = 1000;
-
-// functions
-const subtractUnits = (u) => (game.units -= u);
+import { game, subtractUnits, fps, genContainerEl } from "./script.js";
 
 // objects
-function Generator(name, color, cost, units, costGrowth, unitGrowth) {
+export function Generator(name, color, cost, units, costGrowth, unitGrowth) {
   this.name = name;
   this.color = color;
   this.cost = cost;
@@ -63,7 +54,7 @@ function Generator(name, color, cost, units, costGrowth, unitGrowth) {
     let tempCost = this.cost;
     let tempUnits = this.units;
 
-    for (i = 0; i < pq; i++) {
+    for (let i = 0; i < pq; i++) {
       totalCostAcc += tempCost;
       totalUnitsAcc += tempUnits;
 
@@ -112,37 +103,4 @@ function Generator(name, color, cost, units, costGrowth, unitGrowth) {
   };
 
   this.init();
-}
-
-const game = {
-  units: 0,
-  clickUnits: 1,
-  purchaseQuantity: 1,
-  clickMulti: 1,
-  autoClickInterval: 1000,
-  generatorsList: [],
-
-  click: function () {
-    this.units += this.clickUnits * this.clickMulti;
-  },
-};
-
-// test code
-const generator1 = new Generator("test1", "red", 10, 2, 0.5, 0.5);
-const generator2 = new Generator("test2", "green", 10, 2, 0.5, 0.5);
-const generator3 = new Generator("test3", "purple", 10, 2, 0.5, 0.5);
-
-// event listeners
-mainBtnEl.addEventListener("click", game.click.bind(game));
-
-let gameLoop = setInterval(updateUI, fps);
-
-let generatorLoop = setInterval(() => {
-  game.generatorsList.forEach((generator) => {
-    generator.generateUnits(generator.units, generator.unitMulti);
-  });
-}, genInterval);
-
-function updateUI() {
-  amtDisplayEl.textContent = game.units;
 }
